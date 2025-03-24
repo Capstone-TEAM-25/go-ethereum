@@ -43,3 +43,6 @@ profile.cov
 .vscode
 
 tests/spec-tests/
+
+cmd/evm/evm
+cmd/evm/.unikraft/

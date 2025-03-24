@@ -1,3 +1,11 @@
+## Go Ethereum EVM on Unikraft
+
+**Dependencies:**
+- [kraftkit](https://unikraft.cloud/docs/quickstart/) to build the unikernel
+- [qemu](https://www.qemu.org/) as a VMM to run the unikernel
+
+To run the `evm` binary on a Unikraft unikernel, run `make evm-unikraft`
+
 ## Go Ethereum
 
 Golang execution layer implementation of the Ethereum protocol.

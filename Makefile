@@ -8,6 +8,10 @@ GOBIN = ./build/bin
 GO ?= latest
 GORUN = go run
 
+.PHONY: evm-unikraft
+evm-unikraft:
+	make -C cmd/evm/ run
+
 #? geth: Build geth.
 geth:
 	$(GORUN) build/ci.go install ./cmd/geth
