@@ -27,7 +27,6 @@ import (
 	"github.com/ethereum/go-ethereum/core/state"
 	"github.com/ethereum/go-ethereum/core/tracing"
 	"github.com/ethereum/go-ethereum/eth/tracers/logger"
-	"github.com/ethereum/go-ethereum/internal/debug"
 	"github.com/ethereum/go-ethereum/internal/flags"
 	"github.com/urfave/cli/v2"
 
@@ -201,6 +200,7 @@ var traceFlags = []cli.Flag{
 
 var app = flags.NewApp("the evm command line interface")
 
+/*
 func init() {
 	app.Flags = debug.Flags
 	app.Commands = []*cli.Command{
@@ -229,7 +229,7 @@ func main() {
 		os.Exit(1)
 	}
 }
-
+*/
 // tracerFromFlags parses the cli flags and returns the specified tracer.
 func tracerFromFlags(ctx *cli.Context) *tracing.Hooks {
 	config := &logger.Config{
