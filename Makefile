@@ -8,9 +8,13 @@ GOBIN = ./build/bin
 GO ?= latest
 GORUN = go run
 
-#? geth: Build geth.
+#? uk: Run geth inside a Unikraft unikernel
+uk: geth
+	sudo kraft run --memory 2048M .
+
+#? geth: Build geth as a static binary.
 geth:
-	$(GORUN) build/ci.go install ./cmd/geth
+	$(GORUN) build/ci.go install -static ./cmd/geth
 	@echo "Done building."
 	@echo "Run \"$(GOBIN)/geth\" to launch geth."
 

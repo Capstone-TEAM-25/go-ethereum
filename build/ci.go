@@ -253,7 +253,9 @@ func buildFlags(env build.Environment, staticLinking bool, buildTags []string) (
 		// making build-id reproducibly absent.
 		extld := []string{"-Wl,-z,stack-size=0x800000,--build-id=none,--strip-all"}
 		if staticLinking {
-			extld = append(extld, "-static")
+			flags = append(flags, "-buildmode=pie")
+			ld = append(ld, "-linkmode external")
+			extld = append(extld, "-static-pie")
 			// Under static linking, use of certain glibc features must be
 			// disabled to avoid shared library dependencies.
 			buildTags = append(buildTags, "osusergo", "netgo")
