@@ -1,5 +1,7 @@
 spec: v0.6
 
+name: mx-node
+
 # runtime: base:latest
 template:
   source: https://github.com/unikraft/app-elfloader.git
@@ -18,8 +20,7 @@ unikraft:
     CONFIG_LIBPOSIX_LIBDL: 'y'
     # Configurations options for app-elfloader
     # (they can't be part of the template atm)
-    # CONFIG_APPELFLOADER_ARCH_PRCTL: 'y'
-    CONFIG_LIBPOSIX_PROCESS_ARCH_PRCTL: 'y'
+    CONFIG_APPELFLOADER_ARCH_PRCTL: 'y'
     CONFIG_APPELFLOADER_BRK: 'y'
     CONFIG_APPELFLOADER_CUSTOMAPPNAME: 'y'
     CONFIG_APPELFLOADER_STACK_NBPAGES: 128

@@ -10,7 +10,7 @@ GORUN = go run
 
 #? uk: Run geth inside a Unikraft unikernel
 uk: geth
-	sudo kraft run --memory 2048M .
+	sudo kraft run --memory 4096M .
 
 #? geth: Build geth as a static binary.
 geth:
