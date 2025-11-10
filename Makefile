@@ -18,6 +18,8 @@ uk-run:
 geth-run:
 	./build/bin/geth --http --http.addr 0.0.0.0 --http.api eth,net,web3,admin,debug --pprof --pprof.addr 0.0.0.0 --pprof.port 6061 --metrics --metrics.addr 0.0.0.0 --metrics.port 6060
 	   
+geth-console:
+	./build/bin/geth attach http://127.0.0.1:8545
 
 #? geth: Build geth as a static binary.
 geth:
