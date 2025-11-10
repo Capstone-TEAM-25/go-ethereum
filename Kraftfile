@@ -10,6 +10,7 @@ rootfs: ./build/bin/
 cmd: [
   "/geth",
   "--dev",
+  "--rpc.gascap", "8000000000",
   "--http",
   "--http.addr", "0.0.0.0",
   "--http.api", "eth,net,web3,admin,debug",
@@ -155,7 +156,7 @@ libraries:
       CONFIG_LWIP_IPV6: 'y'
       CONFIG_LWIP_DHCP: 'y'
       CONFIG_LWIP_DNS: 'y'
-      CONFIG_LWIP_NUM_TCPCON: 64
+      CONFIG_LWIP_NUM_TCPCON: 2000
       CONFIG_LWIP_NUM_TCPLISTENERS: 64
       CONFIG_LWIP_ICMP: 'y'
   libelf:
