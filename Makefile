@@ -15,6 +15,8 @@ uk: geth
 uk-run:
 	sudo kraft run -p 8545:8545 -p 6060:6060 -p 30303:30303 -p 6061:6061 --memory 4096M --no-check-updates .
 
+geth-run:
+	./build/bin/geth --http --http.addr 0.0.0.0 --http.api eth,net,web3,admin,debug --pprof --pprof.addr 0.0.0.0 --pprof.port 6061 --metrics --metrics.addr 0.0.0.0 --metrics.port 6060
 	   
 
 #? geth: Build geth as a static binary.
