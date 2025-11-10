@@ -10,6 +10,7 @@ GORUN = go run
 
 #? uk: Run geth inside a Unikraft unikernel
 uk: geth
+	@mkdir -p build/bin/tmp
 	kraft build
 
 uk-run:
