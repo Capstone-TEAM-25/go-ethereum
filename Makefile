@@ -17,7 +17,7 @@ uk-run:
 	sudo kraft run -p 8545:8545 -p 6060:6060 -p 30303:30303 -p 6061:6061 --memory 8192M --no-check-updates .
 
 geth-run:
-	./build/bin/geth --dev --rpc.gascap 8000000000 --http --http.addr 0.0.0.0 --http.api eth,net,web3,admin,debug --pprof --pprof.addr 0.0.0.0 --pprof.port 6061 --metrics --metrics.addr 0.0.0.0 --metrics.port 6060
+	./build/bin/geth --dev --rpc.gascap 8000000000 --http --http.addr 0.0.0.0 --http.api eth,net,web3,admin,debug --verbosity 4 --pprof --pprof.addr 0.0.0.0 --pprof.port 6061 --metrics --metrics.addr 0.0.0.0 --metrics.port 6060
 	   
 geth-console:
 	./build/bin/geth attach http://127.0.0.1:8545
