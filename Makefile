@@ -10,8 +10,12 @@ GORUN = go run
 
 #? uk: Run geth inside a Unikraft unikernel
 uk: geth
-	kraft build .
-	sudo kraft run -p 8545:8545 --memory 4096M .
+	kraft build
+
+uk-run:
+	sudo kraft run -p 8545:8545 -p 6060:6060 -p 30303:30303 -p 6061:6061 --memory 4096M --no-check-updates .
+
+	   
 
 #? geth: Build geth as a static binary.
 geth:
@@ -46,10 +50,10 @@ clean:
 	go clean -cache
 	rm -fr build/_workspace/pkg/ $(GOBIN)/*
 uk-clean:
-	go clean -cache
 	rm -fr build/_workspace/pkg/ $(GOBIN)/*
 	rm -fr Makefile.uk
-	sudo git clean -dxf
+	rm -fr .unikraft
+	rm -fr .config*
 
 
 # The devtools target installs tools required for 'go generate'.

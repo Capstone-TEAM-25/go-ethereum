@@ -7,7 +7,19 @@ template:
 
 rootfs: ./build/bin/
 
-cmd: ["/geth","--http --http.addr=0.0.0.0"]
+cmd: [
+  "/geth",
+  "--http",
+  "--http.addr", "0.0.0.0",
+  "--http.api", "eth,net,web3,admin,debug",
+  "--pprof",
+  "--pprof.addr", "0.0.0.0",
+  "--pprof.port", "6061",
+  "--metrics",
+  "--metrics.addr", "0.0.0.0",
+  "--metrics.port", "6060",
+]
+
 unikraft:
   source: https://github.com/unikraft/unikraft.git
   version: staging
@@ -118,7 +130,7 @@ unikraft:
     # Debug options
     # CONFIG_LIBUKDEBUG_PRINTD: 'y'
     # CONFIG_LIBUKDEBUG_PRINTK_INFO: 'y'
-    # CONFIG_LIBSYSCALL_SHIM_STRACE: 'y'
+ #   CONFIG_LIBSYSCALL_SHIM_STRACE: 'y'
     # CONFIG_LIBSYSCALL_SHIM_DEBUG: 'y'
 
 libraries:
@@ -148,40 +160,6 @@ libraries:
   libelf:
     source: https://github.com/unikraft/lib-libelf.git
     version: staging
-  # compiler-rt:
-  #   source: https://github.com/unikraft/lib-compiler-rt.git
-  #   version: staging
-  # libunwind:
-  #   source: https://github.com/unikraft/lib-libunwind.git
-  #   version: staging
-  # libgo:
-  #   source: https://github.com/unikraft/lib-libgo.git
-  #   version: staging
-  # musl:
-  #   source: https://github.com/unikraft/lib-musl.git
-  #   version: staging
-  # newlib:
-  #   source: https://github.com/unikraft/lib-newlib.git
-  #   version: staging
-  # pthread-embedded:
-  #   source: https://github.com/unikraft/lib-pthread-embedded.git
-  #   version: staging
-  # nettle:
-  #   source: https://github.com/unikraft/lib-nettle.git
-  #   version: staging
-  # wamr:
-  #   source: https://github.com/unikraft/lib-wamr.git
-  #   version: staging
-  #   kconfig:
-  #     - CONFIG_LIBWAMR_MAIN_FUNCTION=n
-  # usockets:
-  #   source: https://github.com/unikraft/lib-usockets.git
-  #   version: stable
-  # uwebsockets:
-  #   source: https://github.com/unikraft/lib-uwebsockets.git
-  #   version: stable
-
 
 targets:
-# - fc/x86_64
 - qemu/x86_64
