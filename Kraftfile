@@ -9,6 +9,7 @@ rootfs: ./build/bin/
 
 cmd: [
   "/geth",
+  "--dev",
   "--http",
   "--http.addr", "0.0.0.0",
   "--http.api", "eth,net,web3,admin,debug",
