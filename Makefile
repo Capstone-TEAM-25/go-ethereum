@@ -13,8 +13,14 @@ uk: geth
 	@mkdir -p build/bin/tmp
 	kraft build
 
+uk-bench:
+	sudo kraft run --log-level debug --log-type basic -p 8545:8545 -p 6060:6060 -p 30303:30303 -p 6061:6061 --memory 8192M --no-check-updates . 2>&1 | grep Served | cut -d" " -f25 | sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2};?)?)?[mGK]//g" | python scripts/avg.py
+
 uk-run:
-	sudo kraft run -p 8545:8545 -p 6060:6060 -p 30303:30303 -p 6061:6061 --memory 8192M --no-check-updates .
+	sudo kraft run --log-level debug --log-type basic -p 8545:8545 -p 6060:6060 -p 30303:30303 -p 6061:6061 --memory 8192M --no-check-updates .
+
+geth-bench:
+	./build/bin/geth --dev --rpc.gascap 8000000000 --http --http.addr 0.0.0.0 --http.api eth,net,web3,admin,debug --verbosity 4 --pprof --pprof.addr 0.0.0.0 --pprof.port 6061 --metrics --metrics.addr 0.0.0.0 --metrics.port 6060 2>&1 | grep Served | cut -d" " -f25 | sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2};?)?)?[mGK]//g" | python scripts/avg.py
 
 geth-run:
 	./build/bin/geth --dev --rpc.gascap 8000000000 --http --http.addr 0.0.0.0 --http.api eth,net,web3,admin,debug --verbosity 4 --pprof --pprof.addr 0.0.0.0 --pprof.port 6061 --metrics --metrics.addr 0.0.0.0 --metrics.port 6060
