@@ -8,7 +8,10 @@ while True:
         f = s[10:s.rfind('µ')]
     except:
         continue
-    t = float(f)
+    try:
+        t = float(f)
+    except:
+        continue
     if t < min:
         min = t
     if t > max:
